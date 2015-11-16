@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FormMakerApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Maker</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/MainController.js"></script>
+    <script src="header/header.controller.js"></script>
+    <script src="sidebar/sidebar.controller.js"></script>
+
+    <link rel="stylesheet" href="../css/dashboard.css" />
+
+</head>
+<body ng-controller="MainController">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div ng-include src="'header/header.view.html'"></div>
+                <div ng-include src="'sidebar/sidebar.view.html'"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" ng-view>
+            </div>
+        </div>
+        <h1>{{ $scope.source }}</h1>
+    </div>
+</body>
+</html>
