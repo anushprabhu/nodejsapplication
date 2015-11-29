@@ -1,5 +1,6 @@
 var users = require("./user.mock.json");
 var q = require("q");
+var uuid = require('node-uuid');
 
 module.exports = function(app){
     var api = {
@@ -16,15 +17,16 @@ module.exports = function(app){
     /* Basic CRUD operations */
 
     function createUser(newUser) {
-        Console.log("Creating new user " + newUser);
+        console.log("Creating new user " + newUser);
         var deferred = q.defer();
+        newUser.id = uuid.v1();
         users.push(newUser);
-        deferred.resolve(users);
+        deferred.resolve(newUser);
         return deferred.promise;
     }
 
     function findAllUser() {
-        Console.log("Fetching all users");
+        console.log("Fetching all users");
         var deferred = q.defer();
         deferred.resolve(users);
         return deferred.promise;

@@ -27,6 +27,7 @@
                         $rootScope.currentEmail = user.email;
                         $rootScope.currentFirstName = user.firstName;
                         $rootScope.currentLastName = user.lastName;
+                        $rootScope.refreshLogin();
                     }
                     else {
                         console.log("Update of user entity failed");

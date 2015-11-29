@@ -21,6 +21,7 @@
                             $rootScope.currentEmail = user.email;
                             $rootScope.currentFirstName = user.firstName;
                             $rootScope.currentLastName = user.lastName;
+                            $rootScope.refreshLogin();
                             $location.url("/profile");
                         }
                         else {
