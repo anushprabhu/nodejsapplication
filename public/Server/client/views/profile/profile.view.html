@@ -1,0 +1,42 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1 class="page-header">Profile</h1>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="username"  class="col-sm-2 control-label">User Name:</label>
+            <div class="col-sm-10">
+                <input id="username" ng-model="model.username"  type="text" class="form-control" placeholder="username" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">Password:</label>
+            <div class="col-sm-10">
+                <input id="Password" ng-model="model.password"  type="password" class="form-control" placeholder="strong password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">First Name:</label>
+            <div class="col-sm-10">
+                <input id="firstname" ng-model="model.firstname" type="text" class="form-control" placeholder="First Name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">Last Name:</label>
+            <div class="col-sm-10">
+                <input id="lastname" ng-model="model.lastname" type="text" class="form-control" placeholder="Last Name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Email:</label>
+            <div class="col-sm-10">
+                <input id="email" ng-model="model.email" type="text" class="form-control" placeholder="example@domain.com" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button id="uubmit" type="submit" ng-click="model.update()" class="btn btn-primary">Update</button>
+                <button id="reset" type="reset" class="btn btn-default">Reset</button>
+            </div>
+        </div>
+    </form>
+
+</div>

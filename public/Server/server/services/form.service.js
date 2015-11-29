@@ -1,0 +1,71 @@
+var model = require("../models/form.model.js")();
+
+module.exports = function(app) {
+    app.get("/api/server/form", findAllForms);
+    app.put("/api/server/form/:formId", updateForm);
+    app.get("/api/server/user/:userId/form", findAllFormsForUser);
+    app.post("/api/server/user/:userId/form", createNewForm);
+    app.delete("/api/server/form/:formId", deleteForm);
+    app.get("/api/server/form/:formId", findFormById);
+
+    function createNewForm(req, res) {
+        console.log("Post request createNewForm - forms");
+        var form = req.body;
+        model
+            .createNewForm(form)
+            .then(function(forms){
+                res.json(forms);
+            });
+    }
+
+    function findAllFormsForUser(req, res){
+        console.log("Inside server side findAllFormsForUser - forms");
+        var userId = req.params.userId;
+        model
+            .findAllFormsByUserId(userId)
+            .then(function(forms){
+                res.json(forms);
+            });
+    }
+
+    function findFormById(req, res){
+        console.log("Inside server side findAllFormsForUser - forms");
+        var formId = req.params.formId;
+        model
+            .findFormById(formId)
+            .then(function(form){
+                res.json(form);
+            });
+    }
+
+    function findAllForms(req, res){
+        console.log("Inside server side findAllForms - forms");
+        model
+            .findAllForms()
+            .then(function(user){
+                res.json(user);
+            });
+    }
+
+    function updateForm(req, res) {
+        console.log("Inside server side updateForm - forms");
+        var formId = req.params.formId;
+        var formObj = req.body;
+        model
+            .updateForm(formId, formObj)
+            .then(function(form){
+                res.json(form);
+            });
+    }
+
+    function deleteForm(req, res) {
+        console.log("Inside server side deleteForm - forms");
+        var formId = req.params.formId;
+        model
+            .deleteForm(formId)
+            .then(function(forms){
+                res.json(forms);
+            });
+    }
+
+};
