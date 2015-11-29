@@ -15,7 +15,7 @@
         model.lastname = $rootScope.currentLastName;
 
         function update(){
-            var userobj = {username: model.username, password: model.password, id: $rootScope.currentId,
+            var userobj = {username: model.username, password: model.password,  id: $rootScope.currentId,
                 email: model.email, firstName: model.firstname, lastName: model.lastname};
 
             UserService.updateUser($rootScope.currentId, userobj)
