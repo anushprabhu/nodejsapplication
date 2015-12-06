@@ -3,23 +3,23 @@ var model = require("../models/form.model.js")();
 module.exports = function(app) {
     app.get("/api/server/form", findAllForms);
     app.put("/api/server/form/:formId", updateForm);
-    app.get("/api/server/user/:userId/form", findAllFormsForUser);
-    app.post("/api/server/user/:userId/form", createNewForm);
     app.delete("/api/server/form/:formId", deleteForm);
     app.get("/api/server/form/:formId", findFormById);
+    app.get("/api/server/user/:userId/form", findAllFormsForUser);
+    app.post("/api/server/user/:userId/form", createNewForm);
 
     function createNewForm(req, res) {
-        console.log("Post request createNewForm - forms");
+        console.log("Post request createNewForm.");
         var form = req.body;
         model
-            .createNewForm(form)
-            .then(function(forms){
-                res.json(forms);
+            .createForm(form)
+            .then(function(newForm){
+                res.json(newForm);
             });
     }
 
     function findAllFormsForUser(req, res){
-        console.log("Inside server side findAllFormsForUser - forms");
+        console.log("Get request to fetch all forms.");
         var userId = req.params.userId;
         model
             .findAllFormsByUserId(userId)
@@ -29,7 +29,7 @@ module.exports = function(app) {
     }
 
     function findFormById(req, res){
-        console.log("Inside server side findAllFormsForUser - forms");
+        console.log("Get request to fetch form by id.");
         var formId = req.params.formId;
         model
             .findFormById(formId)
@@ -39,16 +39,16 @@ module.exports = function(app) {
     }
 
     function findAllForms(req, res){
-        console.log("Inside server side findAllForms - forms");
+        console.log("Get request to find all forms.");
         model
             .findAllForms()
-            .then(function(user){
-                res.json(user);
+            .then(function(forms){
+                res.json(forms);
             });
     }
 
     function updateForm(req, res) {
-        console.log("Inside server side updateForm - forms");
+        console.log("Put request to update form.");
         var formId = req.params.formId;
         var formObj = req.body;
         model
@@ -59,7 +59,7 @@ module.exports = function(app) {
     }
 
     function deleteForm(req, res) {
-        console.log("Inside server side deleteForm - forms");
+        console.log("Delete request to delete Form.");
         var formId = req.params.formId;
         model
             .deleteForm(formId)

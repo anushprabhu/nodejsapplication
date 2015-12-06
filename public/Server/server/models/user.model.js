@@ -61,12 +61,11 @@ module.exports = function(app){
     function deleteUser(userId) {
         console.log("Deleting user ["+userId+"].");
         var deferred = q.defer();
-        var findUser = getUserById(userId);
-        if(findUser != null){
-            users.splice(findUser, 1);
-        }
-        else {
-            console.log("No matching user found with id " + userId + ". Skipping delete.");
+        for(var user in users) {
+            if(users[user].id == userId) {
+                users.splice(user, 1);
+                break;
+            }
         }
 
         deferred.resolve(users);
